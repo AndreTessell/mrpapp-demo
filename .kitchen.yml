@@ -1,0 +1,26 @@
+---
+driver:
+  name: vagrant
+  network:
+    - ["forwarded_port", {guest: 9080, host: 9080}]
+#   name: azurerm
+
+provisioner:
+  name: chef_zero
+
+# driver config for azurerm driver - thanks pendrica!
+# driver_config:
+#   subscription_id: "1e0b427a-d58b-494e-ae4f-ee558463ebbf"
+#   location: "West US"
+#   machine_size: "Standard_D4"
+#   image_urn: Canonical:UbuntuServer:14.04.3-LTS:latest
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[mrpapp::default]
+    attributes:
+
